@@ -157,8 +157,7 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.atn_direct_enable:
+        if (R.id.atn_direct_enable == item.getItemId()) {
                 if (manager != null && channel != null) {
 
                     // Since this is the system wireless settings activity, it's
@@ -170,8 +169,8 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
                     Log.e(TAG, "channel or manager is null");
                 }
                 return true;
-
-            case R.id.atn_direct_discover:
+        }
+        else if (R.id.atn_direct_discover == item.getItemId()) {
                 if (!isWifiP2pEnabled) {
                     Toast.makeText(WiFiDirectActivity.this, R.string.p2p_off_warning,
                             Toast.LENGTH_SHORT).show();
@@ -195,7 +194,8 @@ public class WiFiDirectActivity extends AppCompatActivity implements ChannelList
                     }
                 });
                 return true;
-            default:
+        }
+        else{
                 return super.onOptionsItemSelected(item);
         }
     }
